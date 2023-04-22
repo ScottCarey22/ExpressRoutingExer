@@ -14,6 +14,9 @@ describe("#evalMedian", function () {
     it("finds the Median of an evan set", function () {
         expect(evalMedian([1, -1, 4, 2])).toEqual(1.5)
     })
+    it("find the median of an odd set", function () {
+        expect(evalMedian([1, -1, 4])).toEqual(1)
+    })
 })
 
 describe("#evalMean", function () {

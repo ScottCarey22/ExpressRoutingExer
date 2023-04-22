@@ -2,9 +2,9 @@ const express = require('express')
 const app = express();
 const ExpressError = require("./expressError")
 
-const { convertAndValidateNumsArray, evalMode, evalMean, evalMedian } = require('./helpers.test')
+const { convertAndValidateNumsArray, evalMode, evalMean, evalMedian } = require('./helpers')
 
-app.get('/mean', function (req, rest, next) {
+app.get('/mean', function (req, res, next) {
     if (!req.query.nums) {
         throw new ExpressError('You must pass a query key of nums with a comma=separted list of numbers', 400)
     }
@@ -16,7 +16,7 @@ app.get('/mean', function (req, rest, next) {
 
     let result = {
         operation: 'mean',
-        result: findmean(nums)
+        result: evalMean(nums)
     }
 
     return res.send(result);
@@ -35,7 +35,7 @@ app.get('/median', function (req, res, next) {
 
     let result = {
         operation: 'median',
-        result: findmean(nums)
+        result: evalMedian(nums)
     }
 
     return res.send(result);
@@ -54,7 +54,7 @@ app.get('/mode', function (req, res, next) {
 
     let result = {
         operation: 'mode',
-        result: findmean(nums)
+        result: evalMode(nums)
     }
 
     return res.send(result);

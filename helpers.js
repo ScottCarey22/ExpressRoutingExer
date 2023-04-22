@@ -28,7 +28,7 @@ function convertAndValidateNumsArray(numsString) {
   let result = [];
 
   for (let i = 0; i < numsString.length; i++) {
-    let valToNumber = Number(numsAsStrings[i]);
+    let valToNumber = Number(numsString[i]);
 
     if (Number.isNaN(valToNumber)) {
       return new Error(
